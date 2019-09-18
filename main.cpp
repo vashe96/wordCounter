@@ -4,9 +4,9 @@
 
 #include "file.cpp"
 
-int main()
+int main(int argc, char ** argv)
 {
-	ReadFile* rFile = new ReadFile();
+	ReadFile* rFile = new ReadFile("text.txt");
 
 	rFile->FileToString();
 	delete rFile;

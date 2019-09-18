@@ -25,28 +25,17 @@ void ReadFile::GetName()
 
 std::string ReadFile::FileToString()
 {
-    char str1 = ' ';	
-	int i = 0;
-	int charsize = 0;
-
-	std::ifstream fin(fileName);
-	while (fin.get(str1)) //checking size of file
-	{
-		i++;
-		charsize = i;
-	}
-
-    char resultString[charsize]; //create array of symbols from file 
-    while (fin.get(str1)) 
-        {
-            resultString[i] = str1;
-            i++;
-        }
-
-	fin.close();
-
-	std::cout << charsize << std::endl;
-    std::string result = std::string (resultString);
-    std::cout << result << std::endl;
-    return result;
+   
+    std::ifstream myReadFile(fileName);
+    std::string result = "";
+    char temp;
+    while (myReadFile.get(temp)) //reading characters one by one and adding them to result string
+    {
+        int i = 0;
+        result += temp;
+        i++;
+    }
+    myReadFile.close();
+    std::cout << result;
+    return "dsad";
 }
