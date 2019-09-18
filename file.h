@@ -11,6 +11,7 @@ public:
     void GetName();
 
     std::string FileToString();
+    std::string WordsFromFile(std::string); 
 
 private:
     std::string fileName;

@@ -1,6 +1,7 @@
 #include "file.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 ReadFile::ReadFile()
 {
@@ -37,5 +38,21 @@ std::string ReadFile::FileToString()
     }
     myReadFile.close();
     std::cout << result;
-    return "dsad";
+    return result;
 }
+
+std::string ReadFile:: WordsFromFile(std::string strFile)
+{
+    std::string line = strFile;
+    std::string arr[4];
+    int i = 0;
+    std::stringstream ssin(line);
+    while (ssin.good() && i < 4){
+        ssin >> arr[i];
+        ++i;
+    }
+    for(i = 0; i < 4; i++){
+        std::cout << arr[i] << std::endl;
+    }
+    return "";
+} 
