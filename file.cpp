@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 ReadFile::ReadFile()
 {
@@ -41,18 +42,44 @@ std::string ReadFile::FileToString()
     return result;
 }
 
+
 std::string ReadFile:: WordsFromFile(std::string strFile)
 {
     std::string line = strFile;
-    std::string arr[4];
-    int i = 0;
-    std::stringstream ssin(line);
-    while (ssin.good() && i < 4){
-        ssin >> arr[i];
-        ++i;
-    }
-    for(i = 0; i < 4; i++){
-        std::cout << arr[i] << std::endl;
-    }
-    return "";
+    std::istringstream ss(line); 
+    int size = 0;
+
+    do { 
+
+        std::string word; 
+        ss >> word; 
+        size++;
+
+        char separator [27] = "[](){}<>\'\",;:*=#!?|\\~@$%^&";
+        for (int i = 0; i < 17; i++)
+        {
+            int leng = word.length();
+            if (word[leng-1] == separator[i])
+                word = word.replace((word.length()-1), (word.length()), "" );
+        }
+
+        std::cout << word << std::endl; 
+  
+    } while (ss); 
+    
+    std::string words [size];
+
+    do { 
+        std::string word; 
+        ss >> word; 
+        
+
+
+        std::cout << word << std::endl; 
+  
+    } while (ss); 
+
+    
+    return " ";
 } 
+ 
