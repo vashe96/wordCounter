@@ -7,7 +7,9 @@ int main(int argc, char ** argv)
 	ReadFile* rFile = new ReadFile("text.txt");
 	std::string temp;
 	temp = rFile->FileToString();
-	rFile->WordsFromFile(temp);
+	valueRes result;	
+	result = rFile->WordsFromFile(temp);
+	rFile->Result(result.res, result.size);
 	delete rFile;
 
 	return 0;

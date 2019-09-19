@@ -4,6 +4,9 @@
 #include <sstream>
 #include <algorithm>
 
+valueRes::valueRes(std::string* r, int s) {res = r; size = s;}
+valueRes::valueRes() {res = 0; size = 0;}
+
 ReadFile::ReadFile()
 {
     std::cout << "Enter file name pls: ";
@@ -43,7 +46,9 @@ std::string ReadFile::FileToString()
 }
 
 
-std::string ReadFile:: WordsFromFile(std::string strFile)
+
+
+valueRes ReadFile::WordsFromFile (std::string strFile)
 {
     std::string line = strFile;
     std::istringstream ss(line); 
@@ -56,7 +61,7 @@ std::string ReadFile:: WordsFromFile(std::string strFile)
     } while (ss);
     
     std::istringstream ss2(line); 
-    std::string words [size];
+    std::string* words = new std::string [size];
     int i = 0;
     do { 
 
@@ -78,8 +83,26 @@ std::string ReadFile:: WordsFromFile(std::string strFile)
    
     for (int i = 0; i < size; i++)
         std::cout << words[i] << std::endl;
-
+    valueRes res(words, size);
     
-    return " ";
+    return res;
 } 
+
+void ReadFile::Result(std::string* array, int size)
+{
+    std::string arr  = *array;
+    int len = size;
+
+    for (int i = 0; i < len; i++)
+    {
+        int counter = 0;
+        std::string temp = array[i];
+        for (int j = 0; j < len; j++)
+        {
+            if (temp == array[i]) counter++;  
+        }
+    std::cout << array[i]<< " " << counter << std::endl;
+    
+  }
+}
  
