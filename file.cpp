@@ -71,6 +71,7 @@ std::string ReadFile:: WordsFromFile(std::string strFile)
 
     do { 
         std::string word; 
+        
         ss >> word; 
         
 
