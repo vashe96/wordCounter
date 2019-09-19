@@ -56,7 +56,7 @@ std::string ReadFile:: WordsFromFile(std::string strFile)
         size++;
 
         char separator [27] = "[](){}<>\'\",;:*=#!?|\\~@$%^&";
-        for (int i = 0; i < 17; i++)
+        for (int i = 0; i < 26; i++)
         {
             int leng = word.length();
             if (word[leng-1] == separator[i])
