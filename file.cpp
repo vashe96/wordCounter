@@ -48,12 +48,20 @@ std::string ReadFile:: WordsFromFile(std::string strFile)
     std::string line = strFile;
     std::istringstream ss(line); 
     int size = 0;
-
     do { 
 
         std::string word; 
-        ss >> word; 
+        ss >> word;
         size++;
+    } while (ss);
+    
+    std::istringstream ss2(line); 
+    std::string words [size];
+    int i = 0;
+    do { 
+
+        std::string word; 
+        ss2 >> word; 
 
         char separator [27] = "[](){}<>\'\",;:*=#!?|\\~@$%^&";
         for (int i = 0; i < 26; i++)
@@ -62,23 +70,14 @@ std::string ReadFile:: WordsFromFile(std::string strFile)
             if (word[leng-1] == separator[i])
                 word = word.replace((word.length()-1), (word.length()), "" );
         }
-
-        std::cout << word << std::endl; 
+       
+        words[i] = word;
+        i++;
   
-    } while (ss); 
-    
-    std::string words [size];
-
-    do { 
-        std::string word; 
-        
-        ss >> word; 
-        
-
-
-        std::cout << word << std::endl; 
-  
-    } while (ss); 
+    } while (ss2);     
+   
+    for (int i = 0; i < size; i++)
+        std::cout << words[i] << std::endl;
 
     
     return " ";
