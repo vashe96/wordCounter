@@ -9,7 +9,7 @@ int main(int argc, char ** argv)
 	temp = rFile->FileToString();
 	valueRes result;	
 	result = rFile->WordsFromFile(temp);
-	rFile->Result(result.res, result.size);
+	rFile->Final(result.res, result.size);
 	delete rFile;
 
 	return 0;

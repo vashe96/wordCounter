@@ -2,7 +2,9 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <algorithm>
+
+Result::Result(){word = ""; count = 0;}
+Result::Result(std::string w, int c) {word = w; count = c;}
 
 valueRes::valueRes(std::string* r, int s) {res = r; size = s;}
 valueRes::valueRes() {res = 0; size = 0;}
@@ -88,21 +90,64 @@ valueRes ReadFile::WordsFromFile (std::string strFile)
     return res;
 } 
 
-void ReadFile::Result(std::string* array, int size)
+void ReadFile::Final(std::string* array, int size)
 {
-    std::string arr  = *array;
     int len = size;
+    std::string* str  = new std::string[len];
+    str = array;
+    
+
+    Result* res1 = new Result[size];
+
 
     for (int i = 0; i < len; i++)
     {
-        int counter = 0;
-        std::string temp = array[i];
+        int count = 0;
+        res1[i].word = str[i];
         for (int j = 0; j < len; j++)
         {
-            if (temp == array[i]) counter++;  
+            if(res1[i].word == str[j]) res1[i].count++;
         }
-    std::cout << array[i]<< " " << counter << std::endl;
+        std::cout << res1[i].word << " " << res1[i].count << std::endl;
+    }
+    
+    for (int i = 0; i < len; i++)
+    {
+        std::string temp = res1[i].word;
+        for (int j = i+1; j < len; j++)
+        {
+            std::string temp2 = res1[j].word;
+            if (temp == temp2)
+            {
+                for (int k = j+1; k < len; k++)
+                    {   
+                        res1[k-1].word = res1[k].word;
+                        res1[k-1].count = res1[k].count;
+                        res1[k].word = " ";
+                        res1[k].count = 0;
+                    }
+            }
+        }
+        std::cout << res1[i].word << " " << res1[i].count << std::endl;
+    
+    }
+    
+    
+      for (int i = 0; i < len - 1; i++) {
+        for (int j = 0; j < len - i - 1; j++) {
+            if (res1[j].count < res1[j + 1].count) {
+                Result temp = res1[j];
+                res1[j] = res1[j + 1];
+                res1[j + 1] = temp;
+            }
+        }
+    }
+    
+    for (int i = 0; i < len; i++)
+    {
+        std::cout << res1[i].word << " " << res1[i].count << std::endl;
+    }
     
   }
-}
+
  

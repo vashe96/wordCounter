@@ -8,6 +8,16 @@ public:
     int size;
 };
 
+class Result 
+{
+public:
+    Result();
+    Result(std::string, int);
+    std::string word;
+    int count;
+
+};
+
 class ReadFile
 {
 public:
@@ -20,7 +30,7 @@ public:
     
     std::string FileToString();
     valueRes WordsFromFile(std::string); 
-    void Result(std::string*, int); 
+    void Final(std::string*, int); 
 
 private:
     std::string fileName;
