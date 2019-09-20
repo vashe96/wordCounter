@@ -4,7 +4,7 @@
 
 int main(int argc, char ** argv)
 {
-	ReadFile* rFile = new ReadFile("text.txt");
+	ReadFile* rFile = new ReadFile();
 	std::string temp;
 	temp = rFile->FileToString();
 	valueRes result;	

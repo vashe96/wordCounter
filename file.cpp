@@ -43,7 +43,6 @@ std::string ReadFile::FileToString()
         i++;
     }
     myReadFile.close();
-    std::cout << result;
     return result;
 }
 
@@ -83,8 +82,7 @@ valueRes ReadFile::WordsFromFile (std::string strFile)
   
     } while (ss2);     
    
-    for (int i = 0; i < size; i++)
-        std::cout << words[i] << std::endl;
+    
     valueRes res(words, size);
     
     return res;
@@ -108,7 +106,6 @@ void ReadFile::Final(std::string* array, int size)
         {
             if(res1[i].word == str[j]) res1[i].count++;
         }
-        std::cout << res1[i].word << " " << res1[i].count << std::endl;
     }
     
     for (int i = 0; i < len; i++)
@@ -119,16 +116,16 @@ void ReadFile::Final(std::string* array, int size)
             std::string temp2 = res1[j].word;
             if (temp == temp2)
             {
-                for (int k = j+1; k < len; k++)
+                for (int l = j; l < len; l++)
+                    {for (int k = j+1; k < len; k++)
                     {   
                         res1[k-1].word = res1[k].word;
                         res1[k-1].count = res1[k].count;
                         res1[k].word = " ";
                         res1[k].count = 0;
-                    }
+                    }}
             }
         }
-        std::cout << res1[i].word << " " << res1[i].count << std::endl;
     
     }
     
@@ -142,10 +139,11 @@ void ReadFile::Final(std::string* array, int size)
             }
         }
     }
-    
-    for (int i = 0; i < len; i++)
+    std::cout << "Top 5 words in the text: " << std::endl;
+    for (int i = 0; i < 5; i++)
     {
-        std::cout << res1[i].word << " " << res1[i].count << std::endl;
+        if (res1[i].count != 0)
+            std::cout << res1[i].word << " " << res1[i].count << std::endl;
     }
     
   }
